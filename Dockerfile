@@ -1,9 +1,16 @@
-FROM ruby:2.3
+FROM ruby:2.3-slim
 
 RUN mkdir -p /usr/src/app /usr/src/app/vendor
 WORKDIR /usr/src/app
 
-RUN apt-get update && apt-get upgrade -y apt-transport-https && apt-get clean
+RUN apt-get update && \
+	apt-get install --no-install-recommends -y \
+		apt-transport-https \
+		build-essential \
+		libpq-dev \
+		&& \
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/*
 
 # Repo for Node/Yarn
 COPY apt-conf /etc/apt
