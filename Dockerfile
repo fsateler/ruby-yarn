@@ -3,7 +3,13 @@ FROM ruby:2.3-slim
 RUN mkdir -p /usr/src/app /usr/src/app/vendor
 WORKDIR /usr/src/app
 
-RUN apt-get update && \
+RUN \
+	echo 'path-exclude=/usr/share/doc/*' >> /etc/dpkg/dpkg.cfg.d/99-excludes && \
+	echo 'path-exclude=/usr/share/man/*' >> /etc/dpkg/dpkg.cfg.d/99-excludes && \
+	echo 'path-exclude=/usr/share/locale/*' >> /etc/dpkg/dpkg.cfg.d/99-excludes && \
+	echo 'path-include=/usr/share/locale/locale.alias' >> /etc/dpkg/dpkg.cfg.d/99-excludes && \
+	echo 'path-include=/usr/share/locale/es*/*' >> /etc/dpkg/dpkg.cfg.d/99-excludes && \
+	apt-get update && \
 	apt-get install --no-install-recommends -y \
 		apt-transport-https \
 		build-essential \
