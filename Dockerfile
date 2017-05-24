@@ -5,12 +5,13 @@ WORKDIR /usr/src/app
 
 RUN apt-get update && apt-get upgrade -y apt-transport-https && apt-get clean
 
-# Repo for Yarn
-COPY apt-conf/yarn-pubkey.asc apt-conf/nodesource.gpg.asc /etc/apt/trusted.gpg.d/
-COPY apt-conf/yarn.list apt-conf/node.list /etc/apt/sources.list.d/
-RUN apt-key add /etc/apt/trusted.gpg.d/yarn-pubkey.asc && apt-key add /etc/apt/trusted.gpg.d/nodesource.gpg.asc
+# Repo for Node/Yarn
+COPY apt-conf /etc/apt
 
-# Se necesita para webpack
-RUN apt-get update && apt-get install -y nodejs yarn git\
-	&& apt-get clean
+RUN apt-key add /etc/apt/trusted.gpg.d/yarn-pubkey.asc && \
+	apt-key add /etc/apt/trusted.gpg.d/nodesource.gpg.asc && \
+	apt-get update && \
+	apt-get install -y nodejs yarn git && \
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/*
 
