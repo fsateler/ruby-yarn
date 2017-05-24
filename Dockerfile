@@ -12,9 +12,6 @@ RUN \
 	apt-get update && \
 	apt-get install --no-install-recommends -y \
 		apt-transport-https \
-		build-essential \
-		libpq-dev \
-		gyp \
 		&& \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
@@ -25,7 +22,15 @@ COPY apt-conf /etc/apt
 RUN apt-key add /etc/apt/trusted.gpg.d/yarn-pubkey.asc && \
 	apt-key add /etc/apt/trusted.gpg.d/nodesource.gpg.asc && \
 	apt-get update && \
-	apt-get install -y --no-install-recommends nodejs yarn git && \
+	apt-get install -y --no-install-recommends \
+		nodejs \
+		yarn \
+		git \
+		wkhtmltopdf \
+		build-essential \
+		libpq-dev \
+		gyp \
+		&& \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
