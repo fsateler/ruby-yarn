@@ -25,7 +25,7 @@ COPY apt-conf /etc/apt
 RUN apt-key add /etc/apt/trusted.gpg.d/yarn-pubkey.asc && \
 	apt-key add /etc/apt/trusted.gpg.d/nodesource.gpg.asc && \
 	apt-get update && \
-	apt-get install -y nodejs yarn git && \
+	apt-get install -y --no-install-recommends nodejs yarn git && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
