@@ -8,6 +8,7 @@ RUN apt-get update && \
 		apt-transport-https \
 		build-essential \
 		libpq-dev \
+		gyp \
 		&& \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
