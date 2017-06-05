@@ -30,6 +30,7 @@ RUN apt-key add /etc/apt/trusted.gpg.d/yarn-pubkey.asc && \
 		build-essential \
 		libpq-dev \
 		gyp \
+		graphicsmagick \
 		&& \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
