@@ -26,7 +26,6 @@ RUN apt-key add /etc/apt/trusted.gpg.d/yarn-pubkey.asc && \
 		nodejs \
 		yarn \
 		git \
-		wkhtmltopdf \
 		build-essential \
 		libpq-dev \
 		gyp \
