@@ -30,7 +30,15 @@ RUN apt-key add /etc/apt/trusted.gpg.d/yarn-pubkey.asc && \
 		libpq-dev \
 		gyp \
 		graphicsmagick \
+		curl \
+		libxrender1 \
+		libxext6 \
+		libxrender1 \
+		libfontconfig1 \
 		&& \
 	apt-get clean && \
-	rm -rf /var/lib/apt/lists/*
+	rm -rf /var/lib/apt/lists/* && \
+	curl -L https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz | \
+		tar -C /usr/ --strip-components=1 -xvJ && \
+	which wkhtmltopdf && wkhtmltopdf --version
 
