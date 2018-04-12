@@ -1,4 +1,4 @@
-FROM ruby:2.3-slim-stretch
+FROM ruby:2.5-slim
 
 RUN mkdir -p /usr/src/app /usr/src/app/vendor
 WORKDIR /usr/src/app
