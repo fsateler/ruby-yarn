@@ -33,6 +33,7 @@ RUN apt-get update && \
 		libxext6 \
 		libxrender1 \
 		libfontconfig1 \
+		pdftk \
 		&& \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* && \
