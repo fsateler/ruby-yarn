@@ -1,5 +1,8 @@
 FROM ruby:2.5-slim
 
+# Enable https: instead of git: for github urls
+RUN bundle config github.https true
+
 RUN mkdir -p /usr/src/app /usr/src/app/vendor
 WORKDIR /usr/src/app
 
